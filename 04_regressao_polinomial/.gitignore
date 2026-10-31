@@ -1,6 +1,8 @@
 # Dados e artefatos gerados localmente
 /dados/*
-!/dados/.gitkeep
+!/dados/dados_polinomial.csv
+!/dados/diabetes.parquet
+!/dados/diabetes_categorizado.parquet
 /modelos/*
 !/modelos/.gitkeep
 /relatorios/*

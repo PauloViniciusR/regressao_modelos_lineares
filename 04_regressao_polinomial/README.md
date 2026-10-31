@@ -18,6 +18,7 @@ Comparação de modelos com expansão polinomial, pipelines e validação cruzad
         ├── config.py
         ├── modelos.py
         ├── graficos.py
+        ├── auxiliares.py
         └── utils.py
 ```
 
@@ -27,7 +28,39 @@ Comparação de modelos com expansão polinomial, pipelines e validação cruzad
 
 Selecione o kernel **machine_learn** e execute as células em ordem. O notebook funciona a partir da raiz, do módulo ou da pasta de notebooks e usa o pacote exclusivo `polinomial`.
 
-O ambiente é o [environment.yml da raiz](../environment.yml). Dados e artefatos gerados ficam fora do Git por padrão; o exemplo inicial gera os dados em memória.
+O ambiente é o [environment.yml da raiz](../environment.yml). As três bases da aula estão versionadas. Outros dados e artefatos gerados ficam fora do Git por padrão; o exemplo inicial gera seus próprios dados em memória.
+
+## Materiais da aula 1
+
+Os [códigos originais](referencias/aula_01/) estão disponíveis para consulta. As versões adaptadas ao projeto ficam em `src/polinomial/`.
+
+| Base | Configuração | Uso |
+| --- | --- | --- |
+| `dados_polinomial.csv` | `DADOS_EXEMPLO_POLINOMIAL` | Exemplo da aula, com colunas `X` e `y` |
+| `diabetes.parquet` | `DADOS_DIABETES_TRATADOS` | Base Diabetes tratada |
+| `diabetes_categorizado.parquet` | `DADOS_DIABETES_CATEGORIZADOS` | Base Diabetes com variável categorizada |
+
+Depois de executar a célula de importações do notebook, os arquivos podem ser carregados assim:
+
+```python
+import pandas as pd
+from polinomial.config import DADOS_EXEMPLO_POLINOMIAL
+from polinomial.auxiliares import dataframe_coeficientes
+from polinomial.modelos import (
+    construir_pipeline_modelo_regressao,
+    treinar_e_validar_modelo_regressao,
+    grid_search_cv_regressor,
+    organiza_resultados,
+)
+
+df = pd.read_csv(DADOS_EXEMPLO_POLINOMIAL)
+X = df[["X"]]
+y = df["y"]
+```
+
+Nas instruções da aula, adapte imports como `from src.modelos` para `from polinomial.modelos`. Os caminhos são relativos ao módulo e não dependem da pasta Downloads.
+
+O notebook `01_regressao_polinomial.ipynb` continua como exemplo sintético. Seu arquivo de saída opcional é `exemplo_polinomial.csv`, separado de `dados_polinomial.csv`.
 
 ## Próximos estudos
 
