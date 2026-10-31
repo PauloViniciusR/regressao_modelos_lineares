@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MODULOS = {
     "02_modelos_regressao": "regressao",
     "03_regularizacao": "regularizacao",
+    "04_regressao_polinomial": "polinomial",
 }
 
 
@@ -55,20 +56,25 @@ class ImportacoesNotebooks(unittest.TestCase):
                             self.assertFalse(origem.startswith("src."))
 
     def test_modulos_coexistem_na_mesma_sessao(self):
+        import importlib
+
         # Alternar a ordem reproduz a troca de notebooks sem reiniciar o kernel.
-        for modulo in ("02_modelos_regressao", "03_regularizacao", "02_modelos_regressao"):
+        for modulo in (*MODULOS, *reversed(MODULOS)):
             notebook = sorted((ROOT / modulo / "notebooks").glob("*.ipynb"))[0]
             self.executar_imports(notebook, ROOT)
 
-        import regressao.config as config_regressao
-        import regularizacao.config as config_regularizacao
-        from regressao.modelos import treinar_e_validar_modelo_regressao as treino_regressao
-        from regularizacao.modelos import treinar_e_validar_modelo_regressao as treino_regularizacao
+        funcoes = []
+        pastas_dados = []
+        for modulo, pacote in MODULOS.items():
+            config = importlib.import_module(f"{pacote}.config")
+            modelos = importlib.import_module(f"{pacote}.modelos")
+            self.assertEqual(config.PASTA_PROJETO, ROOT / modulo)
+            self.assertEqual(config.PASTA_DADOS, ROOT / modulo / "dados")
+            funcoes.append(modelos.treinar_e_validar_modelo_regressao)
+            pastas_dados.append(config.PASTA_DADOS)
 
-        self.assertIsNot(treino_regressao, treino_regularizacao)
-        self.assertEqual(config_regressao.PASTA_PROJETO, ROOT / "02_modelos_regressao")
-        self.assertEqual(config_regularizacao.PASTA_PROJETO, ROOT / "03_regularizacao")
-        self.assertNotEqual(config_regressao.PASTA_DADOS, config_regularizacao.PASTA_DADOS)
+        self.assertEqual(len(set(funcoes)), len(MODULOS))
+        self.assertEqual(len(set(pastas_dados)), len(MODULOS))
 
 
 if __name__ == "__main__":

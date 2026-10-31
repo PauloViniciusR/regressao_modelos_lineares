@@ -9,7 +9,7 @@ Estudos e experimentos de regressão com Python e scikit-learn. O repositório r
 | [01 · Fundamentos](01_fundamentos/) | Tipos de aprendizado e etapas de um projeto de Machine Learning | Disponível |
 | [02 · Modelos de regressão](02_modelos_regressao/) | Análise exploratória, regressão linear, transformações e validação cruzada | Disponível |
 | [03 · Regularização](03_regularizacao/) | Ridge, Lasso, ElasticNet e otimização com GridSearchCV | Disponível |
-| [04 · Regressão polinomial](04_regressao_polinomial/) | Expansão de variáveis e complexidade dos modelos | Planejado |
+| [04 · Regressão polinomial](04_regressao_polinomial/) | Expansão de variáveis, comparação de graus e validação cruzada | Exemplo inicial |
 | [05 · Projeto de regressão](05_projeto_regressao/) | Aplicação do fluxo de modelagem em um projeto | Planejado |
 
 Os experimentos de regressão e GridSearchCV utilizam o dataset Diabetes do scikit-learn. A avaliação considera R², MAE e RMSE, com modelos de referência e pipelines de pré-processamento.
@@ -38,7 +38,7 @@ conda activate machine_learn
 
 Abra o [workspace](regressao_modelos_lineares.code-workspace), selecione o kernel **machine_learn** e execute as células do notebook em ordem. Se o ambiente já estiver instalado, basta selecioná-lo. Use o `environment.yml` da raiz como referência do ambiente compartilhado.
 
-Os módulos usam pacotes distintos: `regressao` e `regularizacao`, dentro de suas pastas `src/`. Os notebooks localizam esses pacotes ao executar da raiz, do módulo ou da pasta `notebooks/`.
+Os módulos usam pacotes distintos: `regressao`, `regularizacao` e `polinomial`, dentro de suas pastas `src/`. Os notebooks localizam esses pacotes ao executar da raiz, do módulo ou da pasta `notebooks/`.
 
 ### Dados
 
@@ -53,7 +53,7 @@ Com o ambiente `machine_learn` ativo, execute na raiz:
 python -m unittest discover -s tests -v
 ```
 
-A verificação cobre os imports dos notebooks em diferentes diretórios e o uso dos dois módulos na mesma sessão Python.
+A verificação cobre os imports dos notebooks em diferentes diretórios e o uso dos três módulos na mesma sessão Python.
 
 ## Organização
 
