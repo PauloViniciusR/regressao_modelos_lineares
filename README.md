@@ -1,56 +1,52 @@
 # Regressão com modelos lineares
 
-Trilha de estudos com Python e scikit-learn: fundamentos, regressão linear, regularização, regressão polinomial e um projeto aplicado.
+Estudos e experimentos de regressão com Python e scikit-learn. O repositório reúne fundamentos de Machine Learning, preparação de dados, pipelines, validação cruzada e comparação de modelos lineares regularizados.
 
-## Módulos
+## Conteúdo
 
-| Pasta | Conteúdo | Situação |
+| Módulo | Temas | Status |
 | --- | --- | --- |
-| [01_fundamentos](01_fundamentos/) | Introdução, tipos de aprendizado e etapas de um projeto | Material disponível |
-| [02_modelos_regressao](02_modelos_regressao/) | EDA, regressão linear, pipelines, transformações e validação cruzada | Material disponível |
-| [03_regularizacao](03_regularizacao/) | Ridge, Lasso, ElasticNet e GridSearchCV | Material disponível |
-| [04_regressao_polinomial](04_regressao_polinomial/) | Expansão polinomial e complexidade dos modelos | Pasta reservada |
-| [05_projeto_regressao](05_projeto_regressao/) | Projeto aplicado de regressão | Pasta reservada |
+| [01 · Fundamentos](01_fundamentos/) | Tipos de aprendizado e etapas de um projeto de Machine Learning | Disponível |
+| [02 · Modelos de regressão](02_modelos_regressao/) | Análise exploratória, regressão linear, transformações e validação cruzada | Disponível |
+| [03 · Regularização](03_regularizacao/) | Ridge, Lasso, ElasticNet e otimização com GridSearchCV | Disponível |
+| [04 · Regressão polinomial](04_regressao_polinomial/) | Expansão de variáveis e complexidade dos modelos | Planejado |
+| [05 · Projeto de regressão](05_projeto_regressao/) | Aplicação do fluxo de modelagem em um projeto | Planejado |
 
-Os módulos 02 e 03 mantêm suas próprias pastas `notebooks`, `src`, `dados`, `modelos` e `relatorios`. Os históricos dos dois repositórios originais foram incorporados sem squash nem reescrita dos commits.
+Os experimentos de regressão e GridSearchCV utilizam o dataset Diabetes do scikit-learn. A avaliação considera R², MAE e RMSE, com modelos de referência e pipelines de pré-processamento.
 
-## Executar os notebooks
+## Regularização e GridSearchCV
 
-1. Abra esta pasta no VS Code, ou abra o arquivo `regressao-com-modelos-lineares.code-workspace`.
-2. Selecione o kernel **machine_learn** em cada notebook. Reinicie o kernel ao trocar de módulo: os módulos 02 e 03 têm pacotes diferentes chamados `src`.
-3. Execute as células em ordem. Os caminhos dos notebooks foram ajustados para a nova estrutura.
+Os três modelos seguem a mesma lógica de busca e apresentação dos resultados. A comparação final usa validação cruzada aninhada para avaliar a seleção dos hiperparâmetros.
 
-Para criar o ambiente em outra máquina, a partir da raiz:
+| Notebook | Objetivo |
+| --- | --- |
+| [Comparação dos modelos](03_regularizacao/notebooks/02_GridSearchCV.ipynb) | Comparar Ridge, Lasso e ElasticNet com regressão linear e DummyRegressor |
+| [Ridge](03_regularizacao/notebooks/02a_GridSearchCV_Ridge.ipynb) | Explorar a penalização L2 e ajustar `alpha` |
+| [Lasso](03_regularizacao/notebooks/02b_GridSearchCV_Lasso.ipynb) | Explorar a penalização L1 e analisar coeficientes nulos |
+| [ElasticNet](03_regularizacao/notebooks/02c_GridSearchCV_ElasticNet.ipynb) | Combinar L1 e L2, ajustando `alpha` e `l1_ratio` |
+
+## Ambiente e execução
+
+Requisitos: Conda e um editor com suporte a notebooks Jupyter.
 
 ```bash
+git clone https://github.com/PauloViniciusR/regressao_modelos_lineares.git
+cd regressao_modelos_lineares
 conda env create -f environment.yml
 conda activate machine_learn
 ```
 
-Se esse ambiente já existir, basta selecioná-lo no notebook. A migração não exige recriá-lo. Os arquivos `environment.yml` dentro dos módulos foram mantidos como registros dos projetos originais; use o da raiz para o ambiente compartilhado.
+Abra o [workspace](regressao-com-modelos-lineares.code-workspace), selecione o kernel **machine_learn** e execute as células do notebook em ordem. Se o ambiente já estiver instalado, basta selecioná-lo. Use o `environment.yml` da raiz como referência do ambiente compartilhado.
+
+Reinicie o kernel ao trocar de módulo: os módulos 02 e 03 possuem pacotes próprios chamados `src`.
 
 ### Dados
 
-Os dados de regularização estão versionados em `03_regularizacao/dados`. No módulo 02, `dados/` continua ignorado pelo Git, como no projeto original. As bases locais foram copiadas para permitir continuar trabalhando nesta máquina. Em um clone novo, crie primeiro a pasta `02_modelos_regressao/dados` (por exemplo, com `mkdir -p 02_modelos_regressao/dados` no terminal). Depois execute `02_modelos_regressao/notebooks/01_EDA.ipynb` e depois `06_outras_transformacoes.ipynb` para gerar as bases antes dos notebooks que as utilizam.
+- **Módulo 02:** as bases são geradas pelos notebooks e ficam fora do Git. Crie a pasta com `mkdir -p 02_modelos_regressao/dados` e execute primeiro [01_EDA.ipynb](02_modelos_regressao/notebooks/01_EDA.ipynb), seguido de [06_outras_transformacoes.ipynb](02_modelos_regressao/notebooks/06_outras_transformacoes.ipynb).
+- **Módulo 03:** as bases utilizadas estão incluídas em `03_regularizacao/dados/`.
 
-### GridSearchCV
+## Organização
 
-- [Comparação dos três modelos](03_regularizacao/notebooks/02_GridSearchCV.ipynb)
-- [Ridge](03_regularizacao/notebooks/02a_GridSearchCV_Ridge.ipynb)
-- [Lasso](03_regularizacao/notebooks/02b_GridSearchCV_Lasso.ipynb)
-- [ElasticNet](03_regularizacao/notebooks/02c_GridSearchCV_ElasticNet.ipynb)
+Nos módulos de modelagem, `notebooks/` reúne os experimentos e `src/` concentra as funções de configuração, treinamento e visualização. Dados, modelos treinados e relatórios ficam nas pastas correspondentes de cada módulo.
 
-## Git no dia a dia
-
-Execute os comandos nesta pasta, que é a raiz do novo repositório:
-
-```bash
-git status
-git add .
-git commit -m "Descreve as alterações"
-git push
-```
-
-## Origem dos materiais
-
-Consulte [MIGRACAO.md](MIGRACAO.md) para os repositórios e commits importados. A licença MIT do módulo 02 permanece em `02_modelos_regressao/LICENSE`; sua presença não altera automaticamente a licença dos demais materiais.
+[Padrão de commits](CONTRIBUTING.md) · [Histórico da migração](MIGRACAO.md) · [Licença do módulo 02](02_modelos_regressao/LICENSE)
