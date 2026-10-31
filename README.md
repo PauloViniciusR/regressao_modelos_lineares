@@ -36,14 +36,24 @@ conda env create -f environment.yml
 conda activate machine_learn
 ```
 
-Abra o [workspace](regressao-com-modelos-lineares.code-workspace), selecione o kernel **machine_learn** e execute as células do notebook em ordem. Se o ambiente já estiver instalado, basta selecioná-lo. Use o `environment.yml` da raiz como referência do ambiente compartilhado.
+Abra o [workspace](regressao_modelos_lineares.code-workspace), selecione o kernel **machine_learn** e execute as células do notebook em ordem. Se o ambiente já estiver instalado, basta selecioná-lo. Use o `environment.yml` da raiz como referência do ambiente compartilhado.
 
-Reinicie o kernel ao trocar de módulo: os módulos 02 e 03 possuem pacotes próprios chamados `src`.
+Os módulos usam pacotes distintos: `regressao` e `regularizacao`, dentro de suas pastas `src/`. Os notebooks localizam esses pacotes ao executar da raiz, do módulo ou da pasta `notebooks/`.
 
 ### Dados
 
-- **Módulo 02:** as bases são geradas pelos notebooks e ficam fora do Git. Crie a pasta com `mkdir -p 02_modelos_regressao/dados` e execute primeiro [01_EDA.ipynb](02_modelos_regressao/notebooks/01_EDA.ipynb), seguido de [06_outras_transformacoes.ipynb](02_modelos_regressao/notebooks/06_outras_transformacoes.ipynb).
+- **Módulo 02:** as bases são geradas pelos notebooks e ficam fora do Git. Execute primeiro [01_EDA.ipynb](02_modelos_regressao/notebooks/01_EDA.ipynb), seguido de [06_outras_transformacoes.ipynb](02_modelos_regressao/notebooks/06_outras_transformacoes.ipynb).
 - **Módulo 03:** as bases utilizadas estão incluídas em `03_regularizacao/dados/`.
+
+## Verificação das importações
+
+Com o ambiente `machine_learn` ativo, execute na raiz:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+A verificação cobre os imports dos notebooks em diferentes diretórios e o uso dos dois módulos na mesma sessão Python.
 
 ## Organização
 

@@ -14,4 +14,8 @@ Repositórios de origem:
 
 Os commits originais são ancestrais de `main` neste repositório. As importações usam merges sem squash; os caminhos antigos permanecem nos commits históricos. Para consultar o histórico antes da importação, use `git log COMMIT_IMPORTADO` com o SHA da tabela.
 
-As pastas originais locais e os repositórios remotos foram mantidos. Continue os próximos estudos nesta nova pasta depois de publicar o repositório. Os dados ignorados do módulo 02 foram copiados apenas localmente. Notebooks tiveram os caminhos de importação adaptados à nova estrutura; ambientes originais e licença do módulo 02 foram preservados.
+A pasta de trabalho foi consolidada em `regressao_modelos_lineares`, com o mesmo nome do repositório no GitHub. As pastas locais duplicadas foram retiradas após a conferência dos arquivos e preservadas em um backup externo. O destino dos repositórios remotos antigos é administrado separadamente. Os dados ignorados do módulo 02 foram copiados apenas localmente. Notebooks tiveram os caminhos de importação adaptados à nova estrutura; ambientes originais e licença do módulo 02 foram preservados.
+
+## Organização local
+
+Os pacotes Python foram separados em `regressao` e `regularizacao` para evitar colisões de imports. O ambiente compartilhado é definido somente no `environment.yml` da raiz.
