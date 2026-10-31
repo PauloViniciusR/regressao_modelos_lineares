@@ -1,4 +1,4 @@
-# Regressão com Machine Learning
+# Regressão com modelos lineares
 
 Trilha de estudos com Python e scikit-learn: fundamentos, regressão linear, regularização, regressão polinomial e um projeto aplicado.
 
@@ -16,7 +16,7 @@ Os módulos 02 e 03 mantêm suas próprias pastas `notebooks`, `src`, `dados`, `
 
 ## Executar os notebooks
 
-1. Abra esta pasta no VS Code, ou abra o arquivo `regressao-machine-learning.code-workspace`.
+1. Abra esta pasta no VS Code, ou abra o arquivo `regressao-com-modelos-lineares.code-workspace`.
 2. Selecione o kernel **machine_learn** em cada notebook. Reinicie o kernel ao trocar de módulo: os módulos 02 e 03 têm pacotes diferentes chamados `src`.
 3. Execute as células em ordem. Os caminhos dos notebooks foram ajustados para a nova estrutura.
 
