@@ -44,6 +44,7 @@ Os módulos usam pacotes distintos: `regressao`, `regularizacao` e `polinomial`,
 
 - **Módulo 02:** as bases são geradas pelos notebooks e ficam fora do Git. Execute primeiro [01_EDA.ipynb](02_modelos_regressao/notebooks/01_EDA.ipynb), seguido de [06_outras_transformacoes.ipynb](02_modelos_regressao/notebooks/06_outras_transformacoes.ipynb).
 - **Módulo 03:** as bases utilizadas estão incluídas em `03_regularizacao/dados/`.
+- **Módulo 04:** o CSV polinomial e as duas bases Diabetes da aula estão incluídos em `04_regressao_polinomial/dados/`; os códigos originais ficam em `referencias/aula_01/` dentro do módulo.
 
 ## Verificação das importações
 
