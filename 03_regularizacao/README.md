@@ -1,19 +1,25 @@
-# Modelos de Regularizacao
+# Regularização
 
-Projeto de estudo e comparacao de modelos de regressao com tecnicas de regularizacao.
+Estudo das penalizações L1 e L2 com Ridge, Lasso e ElasticNet. Os experimentos analisam hiperparâmetros, coeficientes e desempenho em regressão.
 
-## Estrutura
+## Notebooks
 
-- `dados/`: datasets usados nos experimentos.
-- `notebooks/`: analises exploratorias e experimentos.
-- `src/`: funcoes reutilizaveis para configuracao, modelagem, metricas e graficos.
-- `modelos/`: artefatos de modelos treinados, mantidos fora do Git por padrao.
-- `relatorios/`: saidas e imagens geradas, mantidas fora do Git por padrao.
+| Notebook | Objetivo |
+| --- | --- |
+| [01 · Regularização](notebooks/01_regularizacao.ipynb) | Explorar o efeito da intensidade da penalização |
+| [02 · Comparação](notebooks/02_GridSearchCV.ipynb) | Comparar os três modelos com validação cruzada aninhada |
+| [02a · Ridge](notebooks/02a_GridSearchCV_Ridge.ipynb) | Ajustar alpha e analisar a penalização L2 |
+| [02b · Lasso](notebooks/02b_GridSearchCV_Lasso.ipynb) | Ajustar alpha e analisar a penalização L1 |
+| [02c · ElasticNet](notebooks/02c_GridSearchCV_ElasticNet.ipynb) | Ajustar alpha e l1_ratio |
 
-## Fluxo do projeto
+## Comparação dos modelos
 
-1. Analise exploratoria dos dados no notebook.
-2. Tratamento e preparacao das features.
-3. Treinamento com validacao cruzada para reduzir risco de overfitting.
-4. Comparacao dos modelos com R2, MAE e RMSE.
-5. Visualizacao de coeficientes, residuos e desempenho.
+Os três modelos testam as mesmas opções de pré-processamento, transformação do alvo e valores de alpha. ElasticNet testa também l1_ratio. A busca seleciona o menor RMSE médio.
+
+A comparação final usa validação cruzada aninhada e inclui regressão linear e DummyRegressor como referências. As tabelas exibem MAE e RMSE positivos; menores valores indicam erros menores.
+
+## Execução
+
+Selecione o kernel `machine_learn` e execute as células em ordem. Cada notebook de Ridge, Lasso e ElasticNet funciona de forma independente. A configuração do ambiente está no [README principal](../README.md).
+
+As bases estão em `dados/` e as funções compartilhadas em `src/`. Os artefatos gerados em `modelos/` e `relatorios/` ficam fora do Git por padrão.
