@@ -31,7 +31,7 @@ Se esse ambiente já existir, basta selecioná-lo no notebook. A migração não
 
 ### Dados
 
-Os dados de regularização estão versionados em `03_regularizacao/dados`. No módulo 02, `dados/` continua ignorado pelo Git, como no projeto original. As bases locais foram copiadas para permitir continuar trabalhando nesta máquina. Em um clone novo, execute `02_modelos_regressao/notebooks/01_EDA.ipynb` e depois `06_outras_transformacoes.ipynb` para gerar as bases antes dos notebooks que as utilizam.
+Os dados de regularização estão versionados em `03_regularizacao/dados`. No módulo 02, `dados/` continua ignorado pelo Git, como no projeto original. As bases locais foram copiadas para permitir continuar trabalhando nesta máquina. Em um clone novo, crie primeiro a pasta `02_modelos_regressao/dados` (por exemplo, com `mkdir -p 02_modelos_regressao/dados` no terminal). Depois execute `02_modelos_regressao/notebooks/01_EDA.ipynb` e depois `06_outras_transformacoes.ipynb` para gerar as bases antes dos notebooks que as utilizam.
 
 ### GridSearchCV
 
