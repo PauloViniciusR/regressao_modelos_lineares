@@ -1,0 +1,10 @@
+# Dados e artefatos gerados localmente
+/dados/*
+!/dados/.gitkeep
+/modelos/*
+!/modelos/.gitkeep
+/relatorios/*
+!/relatorios/.gitkeep
+!/relatorios/imagens/
+/relatorios/imagens/*
+!/relatorios/imagens/.gitkeep
