@@ -22,4 +22,4 @@ A comparação final usa validação cruzada aninhada e inclui regressão linear
 
 Selecione o kernel `machine_learn` e execute as células em ordem. Cada notebook de Ridge, Lasso e ElasticNet funciona de forma independente. A configuração do ambiente está no [README principal](../README.md).
 
-As bases estão em `dados/` e as funções compartilhadas em `src/`. Os artefatos gerados em `modelos/` e `relatorios/` ficam fora do Git por padrão.
+As bases estão em `dados/` e as funções compartilhadas em `src/regularizacao/`. Os artefatos gerados em `modelos/` e `relatorios/` ficam fora do Git por padrão.
