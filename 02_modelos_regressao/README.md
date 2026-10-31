@@ -22,8 +22,8 @@ Experimentos com o dataset Diabetes do scikit-learn: análise exploratória, reg
 
 Use o ambiente `machine_learn` descrito no [README principal](../README.md). Execute os notebooks em ordem, com um kernel próprio para este módulo.
 
-A pasta `dados/` não é versionada. Em um clone novo, crie-a com `mkdir -p 02_modelos_regressao/dados` a partir da raiz do repositório. O notebook 01 gera `diabetes_tratados.parquet`; o notebook 06 gera `diabetes_categorizado.parquet`.
+A pasta `dados/` não é versionada. O notebook 01 cria essa pasta e gera `diabetes_tratados.parquet`; o notebook 06 gera `diabetes_categorizado.parquet`.
 
-As funções reutilizáveis ficam em `src/`. A análise compara R², MAE e RMSE e inclui DummyRegressor como referência.
+As funções reutilizáveis ficam em `src/regressao/`. A análise compara R², MAE e RMSE e inclui DummyRegressor como referência.
 
 [Análise técnica](referencias/analise_tecnica.md) · [Licença MIT deste módulo](LICENSE) · [Próximo módulo: Regularização](../03_regularizacao/)

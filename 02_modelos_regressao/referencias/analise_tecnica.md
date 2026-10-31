@@ -524,7 +524,7 @@ Esse notebook compara diferentes niveis de preprocessamento:
 Como o preprocessamento completo usa `colesterol_hdl_cat`, o notebook deve carregar:
 
 ```python
-from src.config import DADOS_CATEGORIZADOS
+from regressao.config import DADOS_CATEGORIZADOS
 
 df = pd.read_parquet(DADOS_CATEGORIZADOS)
 ```
@@ -655,7 +655,7 @@ Tambem e importante comparar tempo de execucao. Pipelines com `PowerTransformer`
 O notebook usa a base categorizada:
 
 ```python
-from src.config import DADOS_CATEGORIZADOS
+from regressao.config import DADOS_CATEGORIZADOS
 
 df = pd.read_parquet(DADOS_CATEGORIZADOS)
 ```
