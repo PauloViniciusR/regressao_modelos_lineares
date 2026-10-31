@@ -1,0 +1,14 @@
+name: machine_learn
+channels:
+  - defaults
+dependencies:
+  - python=3.12.5
+  - pandas=2.2.2
+  - matplotlib=3.9.2
+  - seaborn=0.13.2
+  - scikit-learn=1.5.1
+  - geopandas=1.0.1
+  - folium=0.17.0
+  - ipympl
+  - ipykernel
+prefix: /home/paulo-vinicius/miniconda3/envs/machine_learn
