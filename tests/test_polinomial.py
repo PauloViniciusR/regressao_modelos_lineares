@@ -57,6 +57,31 @@ class MateriaisPolinomial(unittest.TestCase):
         self.assertTrue(np.isfinite(busca.predict(X)).all())
         self.assertIn(busca.best_params_["regressor__preprocessor__degree"], (1, 2))
 
+    def test_resumo_preserva_modelos_de_graus_diferentes(self):
+        notebook = ROOT / "04_regressao_polinomial/notebooks/01_regressão_polinomial_resumo.ipynb"
+        contexto = {}
+        anterior = Path.cwd()
+        mostrar = plt.show
+        try:
+            os.chdir(notebook.parent)
+            plt.show = lambda: plt.close("all")
+            for i, celula in enumerate(json.loads(notebook.read_text())["cells"]):
+                if celula["cell_type"] == "code":
+                    exec(compile("".join(celula["source"]), f"{notebook}:{i}", "exec"), contexto)
+            regressores = []
+            for grau in (1, 3, 8):
+                modelo = contexto["parametros_modelos"][f"Grau {grau}"]["modelo"]
+                regressores.append(modelo["reg"])
+                self.assertEqual(modelo["reg"].n_features_in_, grau)
+                predicoes = modelo.predict(contexto["df_xfit"])
+                self.assertEqual(len(predicoes), len(contexto["df_xfit"]))
+                self.assertTrue(np.isfinite(predicoes).all())
+            self.assertEqual(len(set(map(id, regressores))), 3)
+        finally:
+            os.chdir(anterior)
+            plt.show = mostrar
+            plt.close("all")
+
     def test_notebook_sintetico_continua_executavel(self):
         notebook = ROOT / "04_regressao_polinomial/notebooks/02_regressao_polinomial.ipynb"
         contexto = {}
