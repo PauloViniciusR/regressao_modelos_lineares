@@ -58,7 +58,7 @@ class MateriaisPolinomial(unittest.TestCase):
         self.assertIn(busca.best_params_["regressor__preprocessor__degree"], (1, 2))
 
     def test_notebook_sintetico_continua_executavel(self):
-        notebook = ROOT / "04_regressao_polinomial/notebooks/01_regressao_polinomial.ipynb"
+        notebook = ROOT / "04_regressao_polinomial/notebooks/02_regressao_polinomial.ipynb"
         contexto = {}
         anterior = Path.cwd()
         mostrar = plt.show
